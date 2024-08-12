@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+        }
+        form {
+            margin: 0 20px;
+        }
+        label, input, select {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        input[type="checkbox"] {
+            display: inline;
+        }
+        input[type="submit"] {
+            width: auto;
+            background-color: lightgreen;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="login-form">
+            <h2>LOGIN FORM</h2>
+            <label for="mail">Mail:</label>
+            <input type="text" id="mail" name="mail">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <input type="submit" value="Submit">
+        </form>
+
+        <form id="register-form">
+            <h2>REGISTER FORM</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password">
+            <label for="country">Choose Country:</label>
+            <select id="country" name="country">
+                <option value="india">India</option>
+                <!-- Add other countries as needed -->
+            </select>
+            <label for="passport">Passport:</label>
+            <input type="radio" id="passport-yes" name="passport" value="yes">
+            <label for="passport-yes">Yes</label>
+            <input type="radio" id="passport-no" name="passport" value="no">
+            <label for="passport-no">No</label>
+            <label>
+                <input type="checkbox" name="declaration" required>
+                My Declaration is Correct
+            </label>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>
