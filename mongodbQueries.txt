@@ -1,0 +1,72 @@
+1.Insert a Single Document:
+
+db.users.insertOne({
+    name: "Alice",
+    email: "alice@example.com",
+    age: 25,
+    address: {
+        city: "New York",
+        country: "USA"
+    }
+});
+2. Insert Multiple Documents
+
+db.users.insertMany([
+    {
+        name: "Bob",
+        email: "bob@example.com",
+        age: 30,
+        address: {
+            city: "Los Angeles",
+            country: "USA"
+        }
+    },
+    {
+        name: "Charlie",
+        email: "charlie@example.com",
+        age: 35,
+        address: {
+            city: "Chicago",
+            country: "USA"
+        }
+    }
+])
+
+3.Find All Documents
+
+db.users.find();
+
+4. Find a Document with a Specific Condition
+
+db.users.find({ name: "Alice" });
+
+5.Update a Single Document
+
+db.users.updateOne(
+    { name: "Alice" },
+    { $set: { age: 26, "address.city": "San Francisco" } }
+);
+
+6.Update Multiple Documents
+
+db.users.updateMany(
+    { "address.country": "USA" },
+    { $set: { "address.country": "United States" } }
+);
+
+7.Delete a Single Document
+
+db.users.deleteOne({ name: "Charlie" });
+
+8.Delete Multiple Documents
+
+db.users.deleteMany({ age: { $lt: 30 } });
+
+9.Find Documents with Sorting and Limit
+
+db.users.find().sort({ age: -1 }).limit(2);
+
+10.Count Documents
+
+db.users.countDocuments();
+
