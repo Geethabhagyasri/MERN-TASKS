@@ -1,0 +1,72 @@
+1. $match Stage
+db.orders.aggregate([
+    { $match: { status: "completed" } }
+]);
+
+2. $group Stage
+db.orders.aggregate([
+    { $group: { _id: "$customerId", totalSpent: { $sum: "$amount" } } }
+]);
+
+3. $project Stage
+db.orders.aggregate([
+    { $project: { _id: 0, customerId: 1, amount: 1, orderDate: 1, year: { $year: "$orderDate" } } }
+]);
+
+4. $sort Stage
+db.orders.aggregate([
+    { $sort: { amount: -1 } }
+]);
+
+5. $limit Stage
+db.orders.aggregate([
+    { $limit: 5 }
+]);
+
+6. $skip Stage
+db.orders.aggregate([
+    { $skip: 10 }
+]);
+
+7. $lookup Stage
+db.orders.aggregate([
+    {
+        $lookup: {
+            from: "customers",
+            localField: "customerId",
+            foreignField: "_id",
+            as: "customerDetails"
+        }
+    }
+]);
+
+
+8. $unwind Stage
+Deconstructs an array field from the input documents.
+
+db.orders.aggregate([
+    { $unwind: "$items" }
+]);
+
+9. $addFields Stage
+db.orders.aggregate([
+    { $addFields: { discount: { $multiply: ["$amount", 0.1] } } }
+]);
+
+10. $facet Stage
+Processes multiple aggregation pipelines within a single stage.
+
+db.orders.aggregate([
+    {
+        $facet: {
+            "groupedByCustomer": [
+                { $group: { _id: "$customerId", totalSpent: { $sum: "$amount" } } }
+            ],
+            "totalOrders": [
+                { $count: "totalOrdersCount" }
+            ]
+        }
+    }
+]);
+
+
